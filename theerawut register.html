@@ -1,0 +1,201 @@
+<!--ธีรวุฒิ ศรีเงิน 6035247010 !--> 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+        function Validation() 
+        {  //Validation is a function Name it is perform on onClentClick Event
+            var errors = "";
+
+            errors += CheckName();
+            errors += CheckEmail();
+            errors += CheckPassword(); 
+            errors += CheckCnfPassword();
+            errors += CheckAge();
+            errors += CheckMobileNo();
+            if (errors != "") 
+            {
+                alert(errors);
+                return false;
+            }
+        }
+
+        //getElementById:เก็บค่าจาก client
+        // ตรวจสอบโดย exp.test(ค่าที่จะเทส)
+        function CheckName() 
+        {
+            //รับค่าจาก client
+            var name = document.getElementById('txtname');
+            var exp = /^[a-zA-Z ]+$/
+            //ถ้าไม่ได้กรอกข้อมูล
+            if(name.value == "")
+            {
+                return "ใส่ชื่อ\n";
+            }
+            //กรณีถูกต้องแล้ว
+            else if(exp.test(name.value))
+            {
+                return "ชื่อผ่านไม่ต้อง งง\n";
+            }
+            //ถ้าข้อมูลผิดเงื่อนไข
+            else
+            {
+                return "ชื่อผิดใส่ใหม่\n";
+            }
+        }
+
+        function CheckEmail() 
+        {
+            var email = document.getElementById('txtemail');
+            var exp = /^[A-Za-z]+@(gmail|hotmail)\.com$/
+            //ถ้าไม่ได้กรอกข้อมูล
+            if(email.value == "")
+            {
+                return "ใส่เมล\n";
+            }
+            //กรณีถูกต้องแล้ว
+            else if(exp.test(email.value))
+            {
+                return "เมลผ่านไม่ต้อง งง\n";
+            }
+            //ถ้าข้อมูลผิดเงื่อนไข
+            else
+            {
+                return "เมลผิดกรองใหม่\n";
+            }
+        }
+
+        function CheckAge() 
+        {
+            var age = document.getElementById('txtage');
+            var exp = /^[0-9]+$/
+            if(age.value == "")
+            {
+                return "ใส่อายุ\n";
+            }
+            else if(age.value >= 18)
+            {
+                return "อายุผ่านไม่ต้อง งง\n";
+
+            }
+            else
+            {
+                return "ใส่อายุใหม่\n";
+            }
+        }
+
+        function CheckPassword() 
+        {
+            var pass = document.getElementById('txtpassword');
+            var exp = /^[A-Z]{1}[a-z]+[0-9]{8}$/ //ตัวแรกตัวใหญ่ ตามด้วย ตัวเลขอย่างน้อย 1 ตัว และ เลข 8 ตัว
+            //ถ้าไม่ได้กรอกข้อมูล
+            if(pass.value == "")
+            {
+                return "ใส่พาส\n";
+            }
+            //กรณีถูกต้องแล้ว
+            else if(exp.test(pass.value))
+            {
+                return "พาสผ่านไม่ต้อง งง\n";
+            }
+            //ถ้าข้อมูลผิดเงื่อนไข
+            else
+            {
+                return "ผาสผิดจร้า\n";
+            }
+        }
+
+        function CheckCnfPassword() 
+        {
+          var pass = document.getElementById('txtpassword');
+          var cfpass = document.getElementById('txtcnfpwd');
+          if(cfpass.value == pass.value)
+          {
+              return "โอเคร\n";
+
+          }
+          else
+          {
+              return "ไม่ตรงกัน";
+          }
+        }
+
+        function CheckMobileNo() 
+        {
+            var mobile = document.getElementById('txtmobno');
+            var exp = /^[0]?[689][0-9]{8}$/
+            if(mobile.value == "")
+            {
+                return "ใส่เบอร์โทรศัพท์\n";              
+            }
+            else if(exp.test(mobile.value))
+            {
+                return "เบอร์ผ่าน\n";    
+            }
+            else
+            {
+                return "ใส่เบอร์ผิด\n"; 
+            }
+           
+        }
+</script>
+     
+
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td>
+                    <Input type="text" ID="txtname" runat="server"></Input type=“text”></td>
+            </tr>
+            <tr>
+                <td>Email
+                </td>
+                <td>
+                    <Input type="text" ID="txtemail" runat="server"></Input type=“text”></td>
+            </tr>
+            <tr>
+                <td>Age
+                </td>
+                <td>
+                    <Input type="text" ID="txtage" runat="server"></Input type=“text”></td>
+            </tr>
+            <tr>
+                <td>Password:
+                </td>
+                <td>
+                    <Input type="text" ID="txtpassword" runat="server"></Input type=“text”></td>
+            </tr>
+            <tr>
+                <td>Confirm Password
+                </td>
+                <td>
+                    <Input type="text" ID="txtcnfpwd" runat="server"></Input type=“text”></td>
+            </tr>
+            <tr>
+                <td>Mobile No:
+                </td>
+                <td>
+                    <Input type="text" ID="txtmobno" runat="server"></Input type=“text”></td>
+            </tr>
+            <tr>
+                <td>Myname : นายธีรวุฒิ ศรีเงิน 6035247010</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="button" ID="btnsave"onclick = "return Validation();" >กดตรงนี้ครับ</button></td>
+            </tr>
+        </table>
+
+    </div>
+
+</body>
+</html>
